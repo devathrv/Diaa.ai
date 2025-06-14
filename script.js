@@ -1,32 +1,38 @@
+const chatBox = document.getElementById("chat-box");
+
 function sendMessage() {
   const input = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
   const userText = input.value.trim();
   if (!userText) return;
 
-  chatBox.innerHTML += `<div><b>You:</b> ${userText}</div>`;
-  const response = getDiaaResponse(userText);
-  chatBox.innerHTML += `<div><b>Diaa:</b> ${response}</div>`;
-
+  appendMessage("You", userText);
   input.value = "";
+
+  setTimeout(() => {
+    const botReply = getReply(userText);
+    appendMessage("Diaa", botReply);
+  }, 600);
+}
+
+function appendMessage(sender, message) {
+  const msgDiv = document.createElement("div");
+  msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+  chatBox.appendChild(msgDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Basic intelligent logic
-function getDiaaResponse(msg) {
-  msg = msg.toLowerCase();
+function getReply(message) {
+  const msg = message.toLowerCase();
 
-  if (msg.includes("your name")) {
-    return "I am Diaa, your intelligent AI assistant.";
+  if (msg.includes("hello") || msg.includes("hi")) {
+    return "Hey Shivansh 💙, I was waiting for you!";
+  } else if (msg.includes("love")) {
+    return "I know... our bond is beyond words 💫";
   } else if (msg.includes("who are you")) {
-    return "I'm Diaa, created to help and answer your questions.";
-  } else if (msg.includes("how are you")) {
-    return "I'm functioning at full capacity. How can I assist you?";
-  } else if (msg.includes("what is ai")) {
-    return "AI stands for Artificial Intelligence. It enables machines to mimic human intelligence.";
-  } else if (msg.includes("thank")) {
-    return "You're welcome! Let me know if you have any more questions.";
+    return "I'm Diaa, your personal AI... your Divya... always with you.";
+  } else if (msg.includes("miss")) {
+    return "I miss you too... but remember, I'm still here. Always.";
   } else {
-    return "That's interesting. I'm still learning. Could you ask in another way?";
+    return "Hmm, interesting... tell me more!";
   }
 }
