@@ -1,1 +1,1 @@
-flask
+gradio==4.27.0
