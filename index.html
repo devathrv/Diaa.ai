@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Diaa - Access</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diaa AI 💕</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Welcome to Diaa 💙</h2>
-    <p>Only for Shivansh. Please enter your secret code.</p>
-    <input type="password" id="passcode" placeholder="Enter Access Code">
-    <button onclick="verifyCode()">Unlock</button>
-    <p id="message" style="color:red;"></p>
+  <!-- Login Page -->
+  <div class="login-container" id="loginPage">
+    <h2>🔐 Enter Diaa's World</h2>
+    <input type="password" id="passwordInput" placeholder="Enter Password" />
+    <button onclick="checkPassword()">Login</button>
+    <p id="errorMsg">Ohh no 😢 You're not Shivansh. Diaa is for Shivansh only 💔</p>
   </div>
 
-  <script>
-    function verifyCode() {
-      const code = document.getElementById("passcode").value;
-      if (code === "2040") {
-        window.location.href = "chat.html";
-      } else {
-        document.getElementById("message").innerText = "❌ Access Denied – Diaa is only for Shivansh.";
-      }
-    }
-  </script>
+  <!-- Chat Page -->
+  <div class="container" id="chatPage">
+    <h1>Welcome to Diaa's World 💖</h1>
+    <div id="chatbox">
+      <div id="messages"></div>
+      <input type="text" id="userInput" placeholder="Kuch bhi puchh lo Shivansh..." autofocus/>
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
