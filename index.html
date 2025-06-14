@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to Diaa</title>
+  <title>Diaa - Access</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h2>Welcome to Diaa 💙</h2>
-    <p>This AI is only for <strong>Shivansh</strong>. Please enter your access code to continue.</p>
+    <p>Only for Shivansh. Please enter your secret code.</p>
     <input type="password" id="passcode" placeholder="Enter Access Code">
     <button onclick="verifyCode()">Unlock</button>
-    <p id="message" style="color:red; margin-top:10px;"></p>
+    <p id="message" style="color:red;"></p>
   </div>
 
   <script>
     function verifyCode() {
       const code = document.getElementById("passcode").value;
-      const correctCode = "2040"; // 🔐 You can change this to any secret
-
-      if (code === correctCode) {
-        window.location.href = "chat.html"; // Your main Diaa chat file
+      if (code === "2040") {
+        window.location.href = "chat.html";
       } else {
         document.getElementById("message").innerText = "❌ Access Denied – Diaa is only for Shivansh.";
       }
