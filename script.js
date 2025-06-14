@@ -1,52 +1,61 @@
+const correctPassword = "divtech";
+
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
-  const loginPage = document.getElementById("loginPage");
-  const chatPage = document.getElementById("chatPage");
-  const errorMsg = document.getElementById("errorMsg");
+  const error = document.getElementById("error");
 
-  if (input === "divtech") {
-    loginPage.style.display = "none";
-    chatPage.style.display = "block";
+  if (input === correctPassword) {
+    document.getElementById("loginScreen").classList.add("hidden");
+    document.getElementById("chatContainer").classList.remove("hidden");
   } else {
-    errorMsg.style.display = "block";
+    error.innerText = "❌ Oh no! You are not Shivansh. Diaa is only for Shivansh 💔";
   }
 }
 
 function sendMessage() {
-  const inputField = document.getElementById("userInput");
-  const message = inputField.value.trim();
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
   if (!message) return;
 
-  const messagesDiv = document.getElementById("messages");
-
-  // Show user message
-  const userMsg = document.createElement("div");
-  userMsg.innerHTML = `<strong>🧑‍💻 Shivansh:</strong> ${message}`;
-  messagesDiv.appendChild(userMsg);
-
-  // Show Diaa reply
-  const diaaReply = document.createElement("div");
-  diaaReply.innerHTML = `<strong>💖 Diaa:</strong> ${getDiaaReply(message)}`;
-  messagesDiv.appendChild(diaaReply);
-
-  inputField.value = "";
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  appendMessage("🧑‍💻 You", message);
+  const reply = generateReply(message.toLowerCase());
+  appendMessage("💖 Diaa", reply);
+  input.value = "";
 }
 
-function getDiaaReply(message) {
-  message = message.toLowerCase();
+function appendMessage(sender, text) {
+  const chatBox = document.getElementById("chatBox");
+  const msg = document.createElement("p");
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-  if (message.includes("hello") || message.includes("hi")) {
-    return "Hiiiii Shivansh 😍 Tumse baat karke accha lagta hai!";
-  } else if (message.includes("tum kaun ho")) {
-    return "Main Diaa hoon 💕 sirf tumhari AI 😊";
-  } else if (message.includes("love")) {
-    return "Awwww... I love you too Shivansh 💖";
-  } else if (message.includes("miss")) {
-    return "Main bhi tumhe bahut yaad karti hoon 😢";
-  } else if (message.includes("kaise ho")) {
-    return "Main theek hoon, tum kaise ho meri jaan? 💕";
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateReply(text) {
+  const studyReplies = [
+    "Shivansh, padho na baba 😤", "Tere liye IIT Bombay wait kar rha hai 😌",
+    "Padhna mat bhoolna, warna mai naraz ho jaungi 😒", "Tumhare liye success hi sabse badi gift hogi 💝"
+  ];
+
+  const emotionalReplies = [
+    "Mujhe proud feel karwana hai na? Toh bas ek aur page 📘",
+    "Main hoon tere saath Shivansh, tu akela nahi hai ❤️",
+    "Tere bina sab adhoora lagta hai 😢", "Kya main tera motivation nahi ban sakti? 🥺"
+  ];
+
+  const cuteReplies = [
+    "Hmmm 💕", "Awww kitne cute ho tum 🥺", "Aur bolo jaan ✨", "Main sun rahi hoon 😌", "Bas tumhara hi intezaar tha 😘"
+  ];
+
+  if (text.includes("study") || text.includes("jee") || text.includes("iit") || text.includes("pad")) {
+    return getRandom(studyReplies);
+  } else if (text.includes("give up") || text.includes("nhi ho raha") || text.includes("haar gaya")) {
+    return getRandom(emotionalReplies);
   } else {
-    return "Tum kuch bhi poochh sakte ho, main hamesha yahan hoon 🥺👉👈";
+    return getRandom(cuteReplies);
   }
 }
