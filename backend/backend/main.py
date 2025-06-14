@@ -1,11 +1,18 @@
 import gradio as gr
 
-# Simple response function — yaha tu apna AI logic daal sakta hai
-def diaa_ai(input_text):
-    return "Diaa says: " + input_text
+def diaa_bot(input_text):
+    # Simple logic: You can later connect memory, mood, etc.
+    if "love" in input_text.lower():
+        return "Aww 🥺, I love you too! 💖"
+    elif "hello" in input_text.lower():
+        return "Hii Shivansh! 🫶 I'm here for you!"
+    else:
+        return "Hmm... batao aur kya chal raha hai 😌"
 
-# Gradio UI setup
-app = gr.Interface(fn=diaa_ai, inputs="text", outputs="text")
+iface = gr.Interface(fn=diaa_bot,
+                     inputs="text",
+                     outputs="text",
+                     title="Diaa AI 💫",
+                     description="Private Emotional AI for Shivansh 💕")
 
-# Server start
-app.launch()
+iface.launch()
