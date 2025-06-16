@@ -8,7 +8,7 @@ function checkPassword() {
     document.getElementById("loginScreen").classList.add("hidden");
     document.getElementById("chatContainer").classList.remove("hidden");
   } else {
-    error.innerText = "❌ Oh no! You are not Shivansh. Diaa is only for Shivansh 💔";
+    error.innerText = "❌ chodo tum se na ho payega ! You are not Shivansh. Diaa is only for Shivansh 💔";
   }
 }
 
