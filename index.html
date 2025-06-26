@@ -3,27 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diaa 💖</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>TejRakshanet Home</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Poppins',sans-serif; background:#000; color:#fff; overflow-x:hidden;}
+    header {position:fixed; top:0; left:0; width:100%; background:#000; display:flex; justify-content:space-between; align-items:center; padding:20px 30px; z-index:1000; border-bottom:1px solid #111;}
+    .logo {font-size:1.5rem; font-weight:bold;}
+    .menu-btn {font-size:2rem; cursor:pointer; transition:0.4s;}
+    .menu {position:fixed; top:0; right:-100%; width:100%; height:100vh; background:#000; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:0.5s;}
+    .menu.active {right:0;}
+    .menu a {color:#fff; font-size:2rem; margin:20px 0; text-decoration:none; transition:0.3s;}
+    .menu a:hover {color:#00eaff;}
+    .hero {position:relative; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px; margin-top:80px; overflow:hidden;}
+    .hero h1 {font-size:3rem; margin-bottom:20px; z-index:1;}
+    .hero p {font-size:1.2rem; color:#ccc; margin-bottom:30px; max-width:700px; z-index:1;}
+    .cta-button {padding:12px 28px; background:#fff; color:#000; border:none; border-radius:8px; cursor:pointer; font-size:1rem; transition:0.4s; z-index:1;}
+    .cta-button:hover {background:transparent; color:#fff; border:1px solid #fff;}
+    .services {padding:60px 20px; max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;}
+    .service-card {display:block; text-decoration:none; padding:30px; border-radius:15px; background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); box-shadow:0 8px 20px rgba(255,255,255,0.1); transition:0.4s; color:#fff; text-align:center;}
+    .service-card:hover {transform:translateY(-10px); box-shadow:0 12px 25px rgba(0,234,255,0.3);}
+    .service-card h3 {margin-bottom:15px; color:#fff;}
+    .service-card p {color:#ccc; font-size:0.95rem;}
+    .carousel {padding:60px 0; overflow:hidden; white-space:nowrap;}
+    .carousel div {display:inline-block; background:#111; color:#ccc; padding:20px; margin:0 10px; border-radius:10px; min-width:250px; animation:scroll 15s linear infinite;}
+    footer {padding:40px 20px; text-align:center; color:#888; border-top:1px solid #111;}
+    .hero::before {content:\"\"; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle, rgba(0,234,255,0.15) 0%, transparent 70%); animation:rotate 20s linear infinite;}
+    @keyframes rotate {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+    @keyframes scroll {0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+    .whatsapp-float {position:fixed; bottom:25px; right:25px; z-index:999; animation:bounce 2s infinite;}
+    .whatsapp-float img {width:60px; height:60px; border-radius:50%; box-shadow:0 4px 10px rgba(0,234,255,0.5); cursor:pointer;}
+    @keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  </style>
 </head>
 <body>
-
-  <div class="login-screen" id="loginScreen">
-    <h2>Welcome to Diaa 💕</h2>
-    <input type="password" id="passwordInput" placeholder="Enter Password..." />
-    <button onclick="checkPassword()">Enter</button>
-    <p id="error"></p>
+  <header>
+    <div class="logo">🔒 TejRakshanet</div>
+    <div class="menu-btn" onclick="toggleMenu(this)">☰</div>
+  </header>
+  <div class="menu" id="menu">
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#feedback">Feedback</a>
+    <a href="https://wa.me/918779989576" target="_blank">WhatsApp</a>
   </div>
 
-  <div class="chat-container hidden" id="chatContainer">
-    <h2 class="chat-title">Diaa 🩷</h2>
-    <div id="chatBox" class="chat-box"></div>
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Talk to Diaa..." />
-      <button onclick="sendMessage()">💌</button>
-    </div>
-  </div>
+  <section class="hero">
+    <h1>Safety First</h1>
+    <p>Securing India's digital frontiers with intelligence-driven cybersecurity solutions. Join the mission today.</p>
+    <button class="cta-button">Join the Mission</button>
+  </section>
 
-  <script src="script.js"></script>
+  <section class="services" id="services">
+    <a href="#" class="service-card"><h3>Cyber Threat Intelligence</h3><p></p></a>
+    <a href="#" class="service-card"><h3>VAPT</h3><p></p></a>
+    <a href="#" class="service-card"><h3>Digital Forensics</h3><p></p></a>
+    <a href="#" class="service-card"><h3>Risk Management</h3><p></p></a>
+    <a href="#" class="service-card"><h3>Cyber Awareness</h3><p></p></a>
+    <a href="#" class="service-card"><h3>Incident Response</h3><p></p></a>
+  </section>
+
+  <section class="carousel" id="feedback">
+    <div>“Excellent service and support!”</div>
+    <div>“They secured our business fast.”</div>
+    <div>“Highly recommended for cyber safety.”</div>
+    <div>“Professional and trustworthy team.”</div>
+    <div>“Great experience with TejRakshanet.”</div>
+  </section>
+
+  <footer>
+    <p>Contact us securely on <a href="https://wa.me/918779989576" style="color:#00eaff; text-decoration:none;">WhatsApp</a></p>
+    <p>&copy; 2025 TejRakshanet × Ekatruth. All rights reserved. Made with ❤️ for Bharat.</p>
+  </footer>
+
+  <a href="https://wa.me/918779989576" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+  function toggleMenu(btn) {
+    btn.classList.toggle(\"open\");
+    document.getElementById(\"menu\").classList.toggle(\"active\");
+    btn.textContent = btn.classList.contains(\"open\") ? \"✖\" : \"☰\";
+  }
+  </script>
 </body>
 </html>
